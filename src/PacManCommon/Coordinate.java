@@ -20,6 +20,7 @@ public class Coordinate {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Coordinate) {
+
             Coordinate other = (Coordinate) obj;
             if (other.x == this.x && other.y == this.y) {
                 return true;

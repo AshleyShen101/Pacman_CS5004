@@ -14,4 +14,6 @@ public interface PacmanModelInterface {
     int[][] getMaze();
     boolean inGame();
     void run(int direction);
+    void ghostMove();
+    int getPacDirection();
 }

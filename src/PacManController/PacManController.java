@@ -21,14 +21,22 @@ public class PacManController implements ActionListener {
     public PacManController() {
         gameInput = new KeyBoardHandler();
         model = new PacManBasicModel();
-        view = new PacManView(gameInput);
-        new Timer(200, this).start();
+        view = new PacManView(gameInput, model); // Challenge 1 solution
+        new Timer(110, this).start();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        model.startGame(direction);
-        model.run(direction);
+        String input = gameInput.getInput();
+        String[] tokens = input.split(" ");
+        direction = Integer.parseInt(tokens[0]);
+        if (!model.inGame() && direction == -1) model.startGame(direction);
+        if(model.inGame()){
+            model.run(direction);
+            model.ghostMove();
+            view.paint(model.inGame(), model.getPacManLocation(), model.getGhostLocation());
+        }
+
     }
 
     public static void main(String[] args) {

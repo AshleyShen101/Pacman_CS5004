@@ -15,8 +15,7 @@ public class KeyBoardHandler implements KeyListener, GameInput {
     public void keyPressed(KeyEvent e) {
         int KeyCode = e.getKeyCode();
         if (KeyCode == KeyEvent.VK_SPACE) {
-            // start the game
-            direction = 0;
+            direction = -1;
             // up, down, left, right
         } else if (KeyCode == KeyEvent.VK_UP) {
             direction = 1;
@@ -27,10 +26,6 @@ public class KeyBoardHandler implements KeyListener, GameInput {
         } else if (KeyCode == KeyEvent.VK_RIGHT) {
             direction = 4;
         }
-    }
-
-    public int getDirection() {
-        return direction;
     }
 
     @Override

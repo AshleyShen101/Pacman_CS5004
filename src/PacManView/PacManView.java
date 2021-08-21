@@ -2,6 +2,7 @@ package PacManView;
 
 import PacManCommon.Coordinate;
 import PacManCommon.GameInput;
+import PacManModel.PacmanModelInterface;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,14 +14,15 @@ public class PacManView implements PacManViewInterface {
     private JFrame frame;
     private PacManPanel panel;
 
-    public PacManView(GameInput kb) {
+    public PacManView(GameInput kb, PacmanModelInterface model) {
         frame = new JFrame();
-        panel = new PacManPanel();
-        panel.setPreferredSize(new Dimension(360, 400));
+        panel = new PacManPanel(model);
+        panel.setPreferredSize(new Dimension(720, 760));
         if (kb.isKeyBoard()) {
             panel.addKeyListener((KeyListener) kb);
         }
         frame.add(panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
